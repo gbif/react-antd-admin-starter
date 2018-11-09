@@ -1,0 +1,3 @@
+{
+  "welcome": "Hej {name}, du har {unreadCount, number} {unreadCount, plural, one {besked} other {beskeder}}"
+}
