@@ -3,18 +3,9 @@ import { ThemeProvider } from 'react-jss'
 import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 
-import NotFound from './NotFound'
-import Home from './Home'
-import DatasetSearch from './Dataset/DatasetSearch'
-import DatasetDeleted from './Dataset/DatasetDeleted'
-import Dataset from './Dataset/Dataset'
 import AppContent from './AppContent'
-
-import Layout from './Layout'
 import BlockingLoader from './BlockingLoader'
 import Errors from './Errors'
-import Login from './Login'
-
 import './App.css'
 
 // translation of the Antd components - not all languages supported. to support more do pull requests for antd
@@ -43,7 +34,6 @@ class App extends Component {
               {this.props.locale.loading && <BlockingLoader />}
               <Errors />
               <Switch>
-                <Route exact path="/login" component={Login} />
                 <Route path="/" component={AppContent} />
               </Switch>
             </React.Fragment>

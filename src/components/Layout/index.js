@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import withWidth, { MEDIUM, EXTRA_LARGE } from 'react-width'
-import { Layout, Icon, Drawer, Breadcrumb } from 'antd';
+import { Layout, Icon, Drawer } from 'antd';
 import BasicMenu from './BasicMenu'
 import SelectLang from './SelectLang'
 import UserMenu from './UserMenu'

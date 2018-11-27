@@ -3,8 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 
 import NotFound from './NotFound'
 import Home from './Home'
-import DatasetSearch from './Dataset/DatasetSearch'
-import DatasetDeleted from './Dataset/DatasetDeleted'
+import { DatasetSearch, DatasetDeleted } from './Dataset/DatasetSearch'
 import Dataset from './Dataset/Dataset'
 import Layout from './Layout'
 
@@ -17,7 +16,7 @@ class AppContent extends Component {
           <Route exact path="/dataset/search" component={DatasetSearch} />
           <Route exact path="/dataset/deleted" component={DatasetDeleted} />
           <Route path="/dataset/:key" component={Dataset} />
-          <Route component={NotFound}/>
+          <Route component={NotFound} />
         </Switch>
       </Layout>
     );

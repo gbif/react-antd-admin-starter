@@ -1,15 +1,16 @@
 import qs from "qs";
 import axios from 'axios'
+import axios_cancelable from './axiosCancel'
 import setHeaders from './setHeaders'
 
 export const searchDatasets = function(query) {
-  return fetch(`//api.gbif-uat.org/v1/dataset?${qs.stringify(query)}`, {
+  return axios_cancelable.get(`//api.gbif-uat.org/v1/dataset?${qs.stringify(query)}`, {
     headers: setHeaders()
   })
 };
 
 export const searchDeletedDatasets = function(query) {
-  return fetch(`//api.gbif-uat.org/v1/dataset/deleted?${qs.stringify(query)}`, {
+  return axios_cancelable.get(`//api.gbif-uat.org/v1/dataset/deleted?${qs.stringify(query)}`, {
     headers: setHeaders()
   })
 };
