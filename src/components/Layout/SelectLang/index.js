@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux'
 import injectSheet from 'react-jss';
 import { Menu, Icon, Dropdown } from 'antd';
-import StateContext from "../../StateContext";
+import { changeLocale } from '../../../actions/locale'
 
 const styles = {
 
@@ -9,9 +10,9 @@ const styles = {
 
 class SelectLang extends PureComponent {
   render() {
-    const { classes, setLocale } = this.props;
+    const { changeLocale } = this.props;
     const langMenu = (
-      <Menu onClick={(e) => {setLocale(e.key)}} >
+      <Menu onClick={(e) => {changeLocale(e.key)}} >
         <Menu.Item key="en">
           <span role="img" aria-label="English">
             🇬🇧
@@ -37,12 +38,12 @@ class SelectLang extends PureComponent {
   }
 }
 
-let HOC = props => (
-  <StateContext.Consumer>
-    {({ api, locale }) => {
-      return <SelectLang {...props} setLocale={api.setLocale} local={locale} />;
-    }}
-  </StateContext.Consumer>
-);
+const mapStateToProps = state => ({
+  locale: state.locale
+})
 
-export default injectSheet(styles)(HOC);
+const mapDispatchToProps = {
+  changeLocale: changeLocale,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(injectSheet(styles)(SelectLang));

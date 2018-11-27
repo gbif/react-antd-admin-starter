@@ -1,4 +1,3 @@
-import axios from 'axios';
 const rtlLocale = {
   'ar': true,
   'dv': true,
@@ -7,10 +6,12 @@ const rtlLocale = {
   'fa': true,
   'ur': true
 };
+
 function getMessages(locale) {
-  return axios.get(`/_translations/${locale}.json`);
+  return fetch(`/_translations/${locale}.json`).then(response => response.json());
 }
 
+// Currently no support for rtl in Ant https://github.com/ant-design/ant-design/issues/4051
 function isRtlLocale(locale) {
   return Boolean(rtlLocale[locale]);
 }

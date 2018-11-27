@@ -2,7 +2,7 @@ import React from 'react';
 import injectSheet from 'react-jss';
 import LoadBar from './LoadBar';
 
-const styles = {
+const styles = theme => ({
   blocker: {
     position: 'fixed',
     top: 0,
@@ -12,7 +12,7 @@ const styles = {
     zIndex: 10000,
     backgroundColor: '#ffffff88'
   }
-};
+});
 
 function BlockingLoader(props) {
   const {classes} = props;

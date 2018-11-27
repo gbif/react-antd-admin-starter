@@ -1,5 +1,9 @@
 @import '~antd/dist/antd.css';
 
+html, body, #root {
+  min-height: 100%;
+}
+
 .headerLogo {
   height: 64px;
   position: relative;
