@@ -5,7 +5,7 @@ import { Menu, Row } from 'antd';
 
 const DatasetMenu = (props) => {
   const { children, dataset, match, constituents } = props
-  const { endpoints, contacts } = dataset
+  const { contacts } = dataset
 
   return (
     <div style={{ background: 'white' }}>
