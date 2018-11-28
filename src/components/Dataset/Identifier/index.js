@@ -3,7 +3,7 @@ import { Row, Col, Switch, Button } from 'antd'
 import Presentation from './Presentation'
 import Form from './Form'
 import axios from 'axios'
-import setHeaders from '../../../../api/setHeaders'
+import setHeaders from '../../../api/setHeaders'
 
 class IdentifierDetails extends React.Component {
   constructor(props) {

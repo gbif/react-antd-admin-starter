@@ -26,29 +26,53 @@ class BasicMenu extends Component {
           theme="dark"
           inlineCollapsed={this.props.collapsed}
         >
-          <SubMenu key="dataset" title={<span><Icon type="mail" /><span><FormattedMessage id="menu_dataset" defaultMessage="Dataset" /></span></span>}>
-            <Menu.Item key="/dataset/search">
-              <FormattedMessage id="menu_datasetSearch" defaultMessage="Search" />
+          <SubMenu key="organization" title={<span><Icon type="share-alt" /><span><FormattedMessage id="menu_organization" defaultMessage="Organizations" /></span></span>}>
+            <Menu.Item key="/organization/search">
+              <FormattedMessage id="menu_search" defaultMessage="Search" />
             </Menu.Item>
-            <Menu.Item key="/dataset/deleted">
-              <FormattedMessage id="menu_datasetDeleted" defaultMessage="Deleted" />
+            <Menu.Item key="/organization/deleted">
+              <FormattedMessage id="menu_deleted" defaultMessage="Deleted" />
             </Menu.Item>
-            <Menu.Item key="/dataset/duplicate">
-              <FormattedMessage id="menu_datasetDuplicate" defaultMessage="Duplicate" />
-            </Menu.Item>
-            <Menu.Item key="/dataset/withNoEndpoint">
-              <FormattedMessage id="menu_datasetWithNoEndpoint" defaultMessage="With no endpoint" />
+            <Menu.Item key="/organization/nonPublishing">
+              <FormattedMessage id="menu_organization_nonPublishing" defaultMessage="Non publishing organizations" />
             </Menu.Item>
           </SubMenu>
 
-          <SubMenu key="organization" title={<span><Icon type="mail" /><span><FormattedMessage id="menu_organization" defaultMessage="Organization" /></span></span>}>
-            <Menu.Item key="/organization/search">
-              <FormattedMessage id="menu_organizationSearch" defaultMessage="Search" />
+          <SubMenu key="dataset" title={<span><Icon type="folder" /><span><FormattedMessage id="menu_dataset" defaultMessage="Datasets" /></span></span>}>
+            <Menu.Item key="/dataset/search">
+              <FormattedMessage id="menu_search" defaultMessage="Search" />
             </Menu.Item>
-            <Menu.Item key="/organization/deleted">
-              <FormattedMessage id="menu_organizationDeleted" defaultMessage="Deleted" />
+            <Menu.Item key="/dataset/deleted">
+              <FormattedMessage id="menu_deleted" defaultMessage="Deleted" />
+            </Menu.Item>
+            <Menu.Item key="/dataset/duplicate">
+              <FormattedMessage id="menu_duplicate" defaultMessage="Duplicate" />
+            </Menu.Item>
+            <Menu.Item key="/dataset/withNoEndpoint">
+              <FormattedMessage id="menu_WithNoEndpoint" defaultMessage="With no endpoint" />
             </Menu.Item>
           </SubMenu>
+
+          <SubMenu key="installation" title={<span><Icon type="hdd" /><span><FormattedMessage id="menu_installation" defaultMessage="Installations" /></span></span>}>
+            <Menu.Item key="/installation/search">
+              <FormattedMessage id="menu_search" defaultMessage="Search" />
+            </Menu.Item>
+            <Menu.Item key="/installation/deleted">
+              <FormattedMessage id="menu_deleted" defaultMessage="Deleted" />
+            </Menu.Item>
+            <Menu.Item key="/installation/nonPublishing">
+              <FormattedMessage id="menu_installation_nonPublishing" defaultMessage="Serving no datasets" />
+            </Menu.Item>
+          </SubMenu>
+
+          <Menu.Item key="/node/search">
+            <Icon type="mail" /><FormattedMessage id="menu_node" defaultMessage="Nodes" />
+          </Menu.Item>
+
+          <Menu.Item key="/user/search">
+            <Icon type="user" /><FormattedMessage id="menu_user" defaultMessage="Users" />
+          </Menu.Item>
+
         </Menu>
       </React.Fragment>
     );

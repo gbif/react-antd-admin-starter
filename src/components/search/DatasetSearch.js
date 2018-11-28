@@ -1,9 +1,10 @@
 import React from 'react'
-import { FormattedMessage, FormattedRelative } from 'react-intl'
+import { FormattedMessage } from 'react-intl'
 import { Link } from 'react-router-dom'
 import DataTable from '../DataTable'
 import DataQuery from '../DataQuery'
-import { searchDatasets, searchDeletedDatasets, searchDuplicateDatasets, searchDatasetsWithNoEndpoint } from '../../api/datasetSearch'
+import { searchDatasets, searchDeletedDatasets, searchDuplicateDatasets, searchDatasetsWithNoEndpoint } from '../../api/dataset'
+import { standardColumns } from './columns'
 
 const columns = [
   {
@@ -11,12 +12,7 @@ const columns = [
     dataIndex: 'title',
     render: (text, record) => <Link to={`/dataset/${record.key}`}>{text}</Link>,
   },
-  {
-    title: <FormattedMessage id="createdDate" defaultMessage="Created" />,
-    dataIndex: 'created',
-    width: "200px",
-    render: text => <FormattedRelative value={text} />
-  }
+  ...standardColumns
 ];
 
 export const DatasetSearch = ({initQuery={q:'', limit: 25, offset: 0}}) => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import PresentationItem, { TextField } from '../../../PresentationItem'
+import PresentationItem, { TextField } from '../../PresentationItem'
 import { FormattedMessage } from 'react-intl'
 
 const Presentation = ({data}) => {

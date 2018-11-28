@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl'
 import { Form, Input, Select, Button } from 'antd';
+import { updateDataset } from '../../../api/dataset'
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -14,7 +15,8 @@ class DatasetForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        console.log(values)
+        updateDataset({...this.props.dataset, ...values})
       }
     });
   }
@@ -26,15 +28,16 @@ class DatasetForm extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { dataset } = this.props
 
     const formItemLayout = {
       labelCol: {
-        xs: { span: 24 },
-        sm: { span: 8 },
+        sm: { span: 24 },
+        md: { span: 8 },
       },
       wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 16 },
+        sm: { span: 24 },
+        md: { span: 16 },
       },
     };
     const tailFormItemLayout = {
@@ -58,7 +61,7 @@ class DatasetForm extends React.Component {
             label={<FormattedMessage id="title" defaultMessage="Title" />}
           >
             {getFieldDecorator('title', {
-              initialValue: 'my initial value',
+              initialValue: dataset.title,
               rules: [{
                 required: true, message: 'Please provide a title',
               }],
@@ -71,7 +74,8 @@ class DatasetForm extends React.Component {
             {...formItemLayout}
             label={<FormattedMessage id="datasetType" defaultMessage="Dataset type" />}
           >
-            {getFieldDecorator('datasetType', {
+            {getFieldDecorator('type', {
+              initialValue: dataset.type,
               rules: [
                 { required: true, message: 'Please select a dataset type!' },
               ],
@@ -90,6 +94,7 @@ class DatasetForm extends React.Component {
             label={<FormattedMessage id="doi" defaultMessage="DOI" />}
           >
             {getFieldDecorator('doi', {
+              initialValue: dataset.doi,
               rules: [{
                 required: true, message: 'Please specify a DOI',
               }],
