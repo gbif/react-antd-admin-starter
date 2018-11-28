@@ -4,31 +4,23 @@ import { withRouter } from 'react-router'
 import DatasetMenu from './DatasetMenu'
 import { Spin } from 'antd'
 import { Route, Switch } from 'react-router-dom'
-import { loadDataset } from '../../../actions/dataset'
 import NotFound from '../../NotFound'
 import DatasetDetails from './Details'
 import ContactList from './ContactList'
+import DataQuery from '../../DataItem'
+import { getDecoratedDataset } from '../../../api/datasetSearch'
 
 class Dataset extends React.Component {
-  componentDidMount() {
-    this.loadData()
-  }
-
-  loadData(){
-    this.props.loadDataset(this.props.match.params.key)
-  }
-
   render() {
-    const { match, dataset } = this.props
-    const { dataset: datasetContent, constituents } = dataset
-
+    const { match, data, loading } = this.props
+    console.log(this.props)
     return (
       <React.Fragment>
-        {!dataset.loading && datasetContent && <Route path="/:type?/:key?/:section?" render={props => (
-          <DatasetMenu dataset={datasetContent} constituents={constituents}>
+        {!loading && <Route path="/:type?/:key?/:section?" render={props => (
+          <DatasetMenu dataset={data.dataset} constituents={data.constituents}>
             <Switch>
               <Route exact path={`${match.path}`} component={DatasetDetails} />
-              <Route path={`${match.path}/contact`} render={(props) => <ContactList contacts={datasetContent.contacts}/>} />
+              <Route path={`${match.path}/contact`} render={(props) => <ContactList contacts={data.dataset.contacts}/>} />
               <Route path={`${match.path}/constituents`} component={() => <h1>constituents</h1>} />
               <Route component={NotFound}/>
             </Switch>
@@ -36,18 +28,19 @@ class Dataset extends React.Component {
         )}
         />}
 
-        {dataset.loading && <Spin size="large" />}
+        {loading && <Spin size="large" />}
       </React.Fragment>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  dataset: state.dataset
-})
+const RoutedDataset = withRouter(Dataset)
 
-const mapDispatchToProps = {
-  loadDataset: loadDataset,
+const DecoratedDataset = (props) => {
+  return <DataQuery 
+    api={getDecoratedDataset} 
+    query={props.match.params.key} 
+    render={props => <RoutedDataset {...props}/>} />
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Dataset))
+export default withRouter(DecoratedDataset)

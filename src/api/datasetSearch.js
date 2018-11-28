@@ -15,6 +15,15 @@ export const searchDeletedDatasets = function(query) {
   })
 };
 
+export const getDecoratedDataset = async function(key) {
+  const dataset = (await getDataset(key)).data
+  const constituents = (await getDatasetConstituents(key, {})).data
+  return {
+    dataset,
+    constituents
+  }
+}
+
 export const getDataset = function(key) {
   return axios.get(`//api.gbif-uat.org/v1/dataset/${key}`, {
     headers: setHeaders()

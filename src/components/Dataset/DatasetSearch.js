@@ -30,5 +30,5 @@ export const DatasetDeleted = ({initQuery={q:'', limit: 25, offset: 0}}) => {
   return <DataQuery 
     api={searchDeletedDatasets} 
     initQuery={initQuery} 
-    render={props => <DataTable {...props} columns={columns} searchable/>} />
+    render={props => <DataTable {...props} columns={columns} />} />
 }
