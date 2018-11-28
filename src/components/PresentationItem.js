@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import injectSheet from 'react-jss'
 import { Tooltip, Icon, Row, Col } from "antd"
+import { FormattedMessage } from 'react-intl'
 
 const styles = theme => ({
   formItem: {
@@ -26,7 +27,7 @@ const styles = theme => ({
   }
 })
 
-class TextField extends Component {
+class PresentationItem extends Component {
   render() {
     const { classes, children, label, helpText } = this.props;
     return (
@@ -53,4 +54,12 @@ class TextField extends Component {
   }
 }
 
-export default injectSheet(styles)(TextField)
+const Item = injectSheet(styles)(PresentationItem);
+
+export const TextField = ({field, data}) => (
+  <Item label={<FormattedMessage id={`field_${field}`} defaultMessage={field} />} >
+    {data[field]}
+  </Item>
+)
+
+export default Item

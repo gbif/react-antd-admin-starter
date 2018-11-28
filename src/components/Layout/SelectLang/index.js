@@ -1,12 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux'
-import injectSheet from 'react-jss';
 import { Menu, Icon, Dropdown } from 'antd';
 import { changeLocale } from '../../../actions/locale'
-
-const styles = {
-
-};
 
 class SelectLang extends PureComponent {
   render() {
@@ -46,4 +41,4 @@ const mapDispatchToProps = {
   changeLocale: changeLocale,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectSheet(styles)(SelectLang));
+export default connect(mapStateToProps, mapDispatchToProps)(SelectLang)

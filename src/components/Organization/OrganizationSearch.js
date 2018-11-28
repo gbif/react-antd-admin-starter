@@ -3,7 +3,7 @@ import { FormattedMessage, FormattedRelative } from 'react-intl'
 import { Link } from 'react-router-dom'
 import DataTable from '../DataTable'
 import DataQuery from '../DataQuery'
-import { searchDatasets, searchDeletedDatasets, searchDuplicateDatasets, searchDatasetsWithNoEndpoint } from '../../api/datasetSearch'
+import { searchOrganizations, searchDeletedOrganizations } from '../../api/organizationSearch'
 
 const columns = [
   {
@@ -19,30 +19,16 @@ const columns = [
   }
 ];
 
-export const DatasetSearch = ({initQuery={q:'', limit: 25, offset: 0}}) => {
+export const OrganizationSearch = ({initQuery={q:'', limit: 25, offset: 0}}) => {
   return <DataQuery 
-    api={searchDatasets} 
+    api={searchOrganizations} 
     initQuery={initQuery} 
     render={props => <DataTable {...props} columns={columns} searchable/>} />
 }
 
-export const DatasetDeleted = ({initQuery={q:'', limit: 25, offset: 0}}) => {
+export const OrganizationDeleted = ({initQuery={q:'', limit: 25, offset: 0}}) => {
   return <DataQuery 
-    api={searchDeletedDatasets} 
-    initQuery={initQuery} 
-    render={props => <DataTable {...props} columns={columns} />} />
-}
-
-export const DatasetDuplicate = ({initQuery={q:'', limit: 25, offset: 0}}) => {
-  return <DataQuery 
-    api={searchDuplicateDatasets} 
-    initQuery={initQuery} 
-    render={props => <DataTable {...props} columns={columns} />} />
-}
-
-export const DatasetWithNoEndpoint = ({initQuery={q:'', limit: 25, offset: 0}}) => {
-  return <DataQuery 
-    api={searchDatasetsWithNoEndpoint} 
+    api={searchDeletedOrganizations} 
     initQuery={initQuery} 
     render={props => <DataTable {...props} columns={columns} />} />
 }

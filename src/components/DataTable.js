@@ -1,13 +1,13 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
-import { Input, Table } from 'antd';
+import { Input, Table, Spin } from 'antd';
 
 const Search = Input.Search;
 
 const DataTable = (props) => {
   const { searchable, updateQuery, fetchData, data, query, loading, columns } = props;
   const { q } = query
-  const Header = <FormattedMessage id="nResults"
+  const Header = loading ? <Spin size="small" /> : <FormattedMessage id="nResults"
     defaultMessage={`{resultCount, number} {resultCount, plural,
         one {results}
         other {results}
@@ -15,6 +15,7 @@ const DataTable = (props) => {
     `}
     values={{ resultCount: data.count, q }}
   />;
+
   return (
     <React.Fragment>
       <div style={{ background: 'white', padding: 16 }}>

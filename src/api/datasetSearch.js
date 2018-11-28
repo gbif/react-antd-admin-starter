@@ -15,6 +15,20 @@ export const searchDeletedDatasets = function(query) {
   })
 };
 
+export const searchDuplicateDatasets = function(query) {
+  return axios_cancelable.get(`//api.gbif-uat.org/v1/dataset/duplicate?${qs.stringify(query)}`, {
+    headers: setHeaders()
+  })
+};
+
+export const searchDatasetsWithNoEndpoint = function(query) {
+  return axios_cancelable.get(`//api.gbif-uat.org/v1/dataset/withNoEndpoint?${qs.stringify(query)}`, {
+    headers: setHeaders()
+  })
+};
+
+
+
 export const getDecoratedDataset = async function(key) {
   const dataset = (await getDataset(key)).data
   const constituents = (await getDatasetConstituents(key, {})).data

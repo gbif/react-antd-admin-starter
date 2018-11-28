@@ -1,4 +1,5 @@
 import base64 from 'base-64'
+import axios from 'axios';
 export const JWT_STORAGE_NAME = 'jwt';
 
 // use sessionstorage for the session, but save in local storage if user choose to be remembered
@@ -8,7 +9,7 @@ if (jwt) {
 }
 
 export const login = async function(username, password, remember) {
-  return fetch(`//api.gbif-dev.org/v1/user/login`, {
+  return axios.post(`//api.gbif-dev.org/v1/user/login`, {}, {
     mode: 'cors',
     headers: {
       'Authorization': `Basic ${base64.encode(username + ":" + password)}`
