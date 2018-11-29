@@ -5,7 +5,7 @@ import { changeLocale } from '../../../actions/locale'
 
 class SelectLang extends PureComponent {
   componentDidMount(){
-    const storedLocale = localStorage.getItem('locale')
+    const storedLocale = localStorage.getItem('locale') || 'en'
     this.props.changeLocale(storedLocale)
   }
 
