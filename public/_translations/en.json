@@ -1,4 +1,5 @@
 {
   "welcome": "Dashboard",
-  "title": "Title"
+  "title": "Title",
+  "menu.search": "Search"
 }

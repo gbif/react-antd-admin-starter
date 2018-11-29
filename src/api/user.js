@@ -27,10 +27,10 @@ export const login = async function(username, password, remember) {
   })
 };
 
-export const me = async function() {
+export const whoAmI = async function() {
   const tokenUser = getTokenUser()
   if (!tokenUser) return
-  return axios.post(`${config.dataApi}/admin/user/${tokenUser.userName}`, {}, {
+  return axios.post(`${config.dataApi}/user/whoami`, {}, {
     headers: setHeaders()
   })
 };

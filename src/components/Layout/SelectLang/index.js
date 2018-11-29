@@ -4,6 +4,11 @@ import { Menu, Icon, Dropdown } from 'antd';
 import { changeLocale } from '../../../actions/locale'
 
 class SelectLang extends PureComponent {
+  componentDidMount(){
+    const storedLocale = localStorage.getItem('locale')
+    this.props.changeLocale(storedLocale)
+  }
+
   render() {
     const { changeLocale } = this.props;
     const langMenu = (
@@ -20,7 +25,7 @@ class SelectLang extends PureComponent {
           </span>{' '}
           Kazakh
         </Menu.Item>
-        <Menu.Item key="da-DK">
+        <Menu.Item key="da">
           <span role="img" aria-label="Dansk">
             🇩🇰
           </span>{' '}
