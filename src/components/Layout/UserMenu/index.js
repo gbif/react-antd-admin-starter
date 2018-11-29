@@ -1,13 +1,29 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux'
 import injectSheet from 'react-jss';
+import { FormattedMessage } from 'react-intl'
 import { Menu, Icon, Dropdown, Avatar, Modal, Button } from 'antd';
 import { addError } from '../../../actions/errors'
 import { login, logout } from '../../../actions/user'
 import LoginForm from './LoginForm'
 
-const styles = {
+const hashCode = function(str) {
+  var hash = 0, i, chr;
+  if (str.length === 0) return hash;
+  for (i = 0; i < str.length; i++) {
+    chr   = str.charCodeAt(i);
+    hash  = ((hash << 5) - hash) + chr;
+    hash |= 0; // Convert to 32bit integer
+  }
+  return hash;
+};
 
+const styles = {
+  avatar: {
+    '& img': {
+      imageRendering: 'pixelated'
+    }
+  }
 };
 
 class UserMenu extends PureComponent {
@@ -36,27 +52,18 @@ class UserMenu extends PureComponent {
     const { classes, user, logout } = this.props;
     let currentUser
     if (user) {
+      const imgNr = Math.abs(hashCode(user.username)) % 10
       currentUser = {
         name: user.username,
-        avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png'
+        avatar: `/_palettes/${imgNr}.png`
       };
     }
 
     const menu = (
-      <Menu className={styles.menu} selectedKeys={[]}>
-        {/* <Menu.Item key="userinfo">
-          <Icon type="setting" />
-          account settings
-        </Menu.Item>
-        <Menu.Divider /> */}
+      <Menu selectedKeys={[]}>
         {user && <Menu.Item key="logout" onClick={() => { logout() }}>
           <Icon type="logout" />
-          logout
-        </Menu.Item>
-        }
-        {!user && <Menu.Item key="login" onClick={this.showLogin}>
-          <Icon type="login" />
-          Login
+          <FormattedMessage id="logout" defaultMessage="Logout" />
         </Menu.Item>
         }
       </Menu>
@@ -65,23 +72,23 @@ class UserMenu extends PureComponent {
     return (
       <React.Fragment>
         {!user && <span style={{ padding: '0 16px' }}><Button type="primary" onClick={this.showLogin}>
-          Login
+          <FormattedMessage id="login" defaultMessage="Login" />
         </Button></span>}
         {user && <Dropdown overlay={menu}>
           <span style={{ padding: '0 16px' }}>
             <Avatar
               style={{ marginRight: 8 }}
               size="small"
-              className={styles.avatar}
+              className={classes.avatar}
               src={currentUser.avatar}
               alt="avatar"
             />
-            <span className={styles.name}>{currentUser.name}</span>
+            <span>{currentUser.name}</span>
           </span>
         </Dropdown>
         }
         <Modal
-          title='Login'
+          title={<FormattedMessage id="login" defaultMessage="Login" />}
           visible={this.state.visible}
           onOk={this.handleLogin}
           onCancel={this.handleCancel}

@@ -1,14 +1,14 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux'
-import injectSheet from 'react-jss';
 import { Menu, Icon, Dropdown } from 'antd';
 import { changeLocale } from '../../../actions/locale'
 
-const styles = {
-
-};
-
 class SelectLang extends PureComponent {
+  componentDidMount(){
+    const storedLocale = localStorage.getItem('locale')
+    this.props.changeLocale(storedLocale)
+  }
+
   render() {
     const { changeLocale } = this.props;
     const langMenu = (
@@ -19,8 +19,14 @@ class SelectLang extends PureComponent {
           </span>{' '}
           English
         </Menu.Item>
-        <Menu.Item key="da-DK">
-          <span role="img" aria-label="Português">
+        <Menu.Item key="kk">
+          <span role="img" aria-label="Kazakh">
+            🇰🇿
+          </span>{' '}
+          Қазақша
+        </Menu.Item>
+        <Menu.Item key="da">
+          <span role="img" aria-label="Dansk">
             🇩🇰
           </span>{' '}
           Dansk
@@ -46,4 +52,4 @@ const mapDispatchToProps = {
   changeLocale: changeLocale,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectSheet(styles)(SelectLang));
+export default connect(mapStateToProps, mapDispatchToProps)(SelectLang)

@@ -1,4 +1,10 @@
+import qs from "qs";
 import base64 from 'base-64'
+import axios from 'axios';
+import config from './util/config'
+import axios_cancelable from './util/axiosCancel'
+import setHeaders from './util/setHeaders'
+
 export const JWT_STORAGE_NAME = 'jwt';
 
 // use sessionstorage for the session, but save in local storage if user choose to be remembered
@@ -7,12 +13,25 @@ if (jwt) {
   sessionStorage.setItem(JWT_STORAGE_NAME, jwt);
 }
 
+export const search = function(query) {
+  return axios_cancelable.get(`${config.dataApi}/admin/user/search?${qs.stringify(query)}`, {
+    headers: setHeaders()
+  })
+};
+
 export const login = async function(username, password, remember) {
-  return fetch(`//api.gbif-dev.org/v1/user/login`, {
-    mode: 'cors',
+  return axios.post(`${config.dataApi}/user/login`, {}, {
     headers: {
       'Authorization': `Basic ${base64.encode(username + ":" + password)}`
     }
+  })
+};
+
+export const whoAmI = async function() {
+  const tokenUser = getTokenUser()
+  if (!tokenUser) return
+  return axios.post(`${config.dataApi}/user/whoami`, {}, {
+    headers: setHeaders()
   })
 };
 

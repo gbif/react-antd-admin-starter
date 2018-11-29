@@ -13,21 +13,19 @@ export const clearUser = () => ({
 })
 
 export const login = ({userName, password, remember}) => async (dispatch, getState) => {
-  alert(JSON.stringify(userName))
-  const response = await logUserIn(userName, password, remember)
-  if (response.ok) {
-    const user = await response.json()
-    alert(JSON.stringify(user))
-    const jwt = user.token
-    sessionStorage.setItem(JWT_STORAGE_NAME, jwt);
-    if (remember) {
-      localStorage.setItem(JWT_STORAGE_NAME, jwt);
-    }
-    dispatch(setUser(getTokenUser(jwt)))
-  } else {
-    
-    dispatch(addError(response))
-  }
+  logUserIn(userName, password, remember)
+    .then(res => {
+      const user = res.data
+      const jwt = user.token
+      sessionStorage.setItem(JWT_STORAGE_NAME, jwt);
+      if (remember) {
+        localStorage.setItem(JWT_STORAGE_NAME, jwt);
+      }
+      dispatch(setUser(getTokenUser(jwt)))
+    })
+    .catch(err => {
+      dispatch(addError(err.response))
+    })
 }
 
 export const logout = () => async (dispatch, getState) => {

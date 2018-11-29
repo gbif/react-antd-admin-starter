@@ -1,7 +1,0 @@
-{
-  "welcome": "Hej {name}, du har {unreadCount, number} {unreadCount, plural, one {besked} other {beskeder}}",
-  "menu_dataset": "Datasæt",
-  "menu_datasetSearch": "Søg",
-  "menu_datasetDeleted": "Slettede",
-  "nResults": "{resultCount, number} {resultCount, plural, one {resultat} other {resultater}}"
-}
