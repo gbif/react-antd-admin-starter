@@ -17,8 +17,8 @@ import { LocaleProvider } from 'antd';
 import { IntlProvider, addLocaleData } from 'react-intl'
 import da from 'react-intl/locale-data/da'
 import en from 'react-intl/locale-data/en'
-import fr from 'react-intl/locale-data/fr'
-addLocaleData([...da, ...en, ...fr])
+import kk from 'react-intl/locale-data/kk'
+addLocaleData([...da, ...en, ...kk])
 
 const theme = {
   colorPrimary: 'deepskyblue'

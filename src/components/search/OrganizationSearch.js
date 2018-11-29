@@ -10,7 +10,7 @@ const columns = [
   {
     title: <FormattedMessage id="title" defaultMessage="Title" />,
     dataIndex: 'title',
-    render: (text, record) => <Link to={`/dataset/${record.key}`}>{text}</Link>,
+    render: (text, record) => <Link to={`/organization/${record.key}`}>{text}</Link>,
   },
   ...standardColumns
 ];

@@ -15,8 +15,8 @@ class DatasetForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log(values)
         updateDataset({...this.props.dataset, ...values})
+        .then(this.props.onSubmit)
       }
     });
   }

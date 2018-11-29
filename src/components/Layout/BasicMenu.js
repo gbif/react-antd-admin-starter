@@ -38,7 +38,7 @@ class BasicMenu extends Component {
             </Menu.Item>
           </SubMenu>
 
-          <SubMenu key="dataset" title={<span><Icon type="folder" /><span><FormattedMessage id="menu_dataset" defaultMessage="Datasets" /></span></span>}>
+          <SubMenu key="dataset" title={<span><Icon type="table" /><span><FormattedMessage id="menu_dataset" defaultMessage="Datasets" /></span></span>}>
             <Menu.Item key="/dataset/search">
               <FormattedMessage id="menu_search" defaultMessage="Search" />
             </Menu.Item>
@@ -62,6 +62,18 @@ class BasicMenu extends Component {
             </Menu.Item>
             <Menu.Item key="/installation/nonPublishing">
               <FormattedMessage id="menu_installation_nonPublishing" defaultMessage="Serving no datasets" />
+            </Menu.Item>
+          </SubMenu>
+
+          <SubMenu key="grbio" title={<span><Icon type="api" /><span><FormattedMessage id="menu_grbio" defaultMessage="GRBIO" /></span></span>}>
+            <Menu.Item key="/grbio/collection/search">
+              <FormattedMessage id="menu_collection" defaultMessage="Collections" />
+            </Menu.Item>
+            <Menu.Item key="/grbio/institution/search">
+              <FormattedMessage id="menu_institution" defaultMessage="Institutions" />
+            </Menu.Item>
+            <Menu.Item key="/grbio/person/search">
+              <FormattedMessage id="menu_person" defaultMessage="Persons" />
             </Menu.Item>
           </SubMenu>
 

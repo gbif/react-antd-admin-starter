@@ -7,6 +7,7 @@ import Home from './Home'
 import { DatasetSearch, DatasetDeleted, DatasetDuplicate, DatasetWithNoEndpoint } from './search/DatasetSearch'
 import { OrganizationSearch, OrganizationDeleted, OrganizationNonPublishing } from './search/OrganizationSearch'
 import { InstallationSearch, InstallationDeleted, InstallationNonPublishing } from './search/InstallationSearch'
+import { CollectionSearch, InstitutionSearch, PersonSearch } from './search/grbio'
 import { NodeSearch } from './search/NodeSearch'
 import { UserSearch } from './search/UserSearch'
 
@@ -33,6 +34,10 @@ class AppContent extends Component {
           <Route exact path="/installation/search" component={InstallationSearch} />
           <Route exact path="/installation/deleted" component={InstallationDeleted} />
           <Route exact path="/installation/nonPublishing" component={InstallationNonPublishing} />
+
+          <Route exact path="/grbio/collection/search" component={CollectionSearch} />
+          <Route exact path="/grbio/institution/search" component={InstitutionSearch} />
+          <Route exact path="/grbio/person/search" component={PersonSearch} />
 
           <Route exact path="/node/search" component={NodeSearch} />
           <Route exact path="/user/search" component={UserSearch} />

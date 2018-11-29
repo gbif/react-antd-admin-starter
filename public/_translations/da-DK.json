@@ -1,5 +1,5 @@
 {
-  "welcome": "Hej {name}, du har {unreadCount, number} {unreadCount, plural, one {besked} other {beskeder}}",
+  "welcome": "Dashboard",
   "menu_dataset": "Datasæt",
   "menu_datasetSearch": "Søg",
   "menu_datasetDeleted": "Slettede",

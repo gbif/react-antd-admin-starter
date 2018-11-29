@@ -1,7 +1,8 @@
 import qs from "qs";
-import axios_cancelable from './axiosCancel'
 import base64 from 'base-64'
 import axios from 'axios';
+import config from './config'
+import axios_cancelable from './axiosCancel'
 import setHeaders from './setHeaders'
 
 export const JWT_STORAGE_NAME = 'jwt';
@@ -13,17 +14,24 @@ if (jwt) {
 }
 
 export const search = function(query) {
-  return axios_cancelable.get(`//api.gbif-dev.org/v1/admin/user/search?${qs.stringify(query)}`, {
+  return axios_cancelable.get(`${config.dataApi}/admin/user/search?${qs.stringify(query)}`, {
     headers: setHeaders()
   })
 };
 
 export const login = async function(username, password, remember) {
-  return axios.post(`//api.gbif-dev.org/v1/user/login`, {}, {
-    mode: 'cors',
+  return axios.post(`${config.dataApi}/user/login`, {}, {
     headers: {
       'Authorization': `Basic ${base64.encode(username + ":" + password)}`
     }
+  })
+};
+
+export const me = async function() {
+  const tokenUser = getTokenUser()
+  if (!tokenUser) return
+  return axios.post(`${config.dataApi}/admin/user/${tokenUser.userName}`, {}, {
+    headers: setHeaders()
   })
 };
 

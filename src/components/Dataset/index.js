@@ -57,7 +57,7 @@ class Dataset extends React.Component {
         {!loading && <Route path="/:type?/:key?/:section?" render={props => (
           <DatasetMenu dataset={data.dataset} constituents={data.constituents}>
             <Switch>
-              <Route exact path={`${match.path}`} render={() => <DatasetDetails dataset={data.dataset}/>} />
+              <Route exact path={`${match.path}`} render={() => <DatasetDetails dataset={data.dataset} refresh={this.getData}/>} />
               <Route path={`${match.path}/contact`} render={(props) => <ContactList contacts={data.dataset.contacts}/>} />
               <Route path={`${match.path}/constituents`} component={() => <h1>constituents</h1>} />
               <Route component={NotFound}/>

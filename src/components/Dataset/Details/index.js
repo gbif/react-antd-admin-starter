@@ -11,7 +11,7 @@ class Details extends React.Component {
   }
 
   render() {
-    const { dataset, user } = this.props
+    const { dataset, user, refresh } = this.props
     return (
       <React.Fragment>
         <div style={{maxWidth: 800}}>
@@ -24,7 +24,10 @@ class Details extends React.Component {
             </Col>
           </Row>}
           {!this.state.edit && <Presentation dataset={dataset}/>}
-          {this.state.edit && <Form dataset={dataset}/>}
+          {this.state.edit && <Form dataset={dataset} onSubmit={() => {
+              this.setState({edit: false})
+              refresh()
+            }} />}
         </div>
       </React.Fragment>
     )
