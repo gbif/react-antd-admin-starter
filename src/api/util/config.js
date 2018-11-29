@@ -6,8 +6,9 @@ const environments = {
     dataApi: '//api.gbif-uat.org/v1',
   },
   dev: {
-    // dataApi: '//registry-demo.gbif-dev.org',
-    dataApi: '//api-demo.gbif-dev.org/v1',
+    // dataApi: '//api.gbif-dev.org/v1',
+    // dataApi: '//api-demo.gbif-dev.org/v1',
+    dataApi: 'https://registry-demo.gbif-dev.org',
     env: 'dev'
   }
 };
@@ -23,4 +24,4 @@ if (domain.endsWith('gbif.org')) {
   env = environments.dev;
 }
 
-module.exports = env;
+export default env

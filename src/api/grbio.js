@@ -1,7 +1,7 @@
 import qs from "qs";
-import config from './config'
-import axios_cancelable from './axiosCancel'
-import setHeaders from './setHeaders'
+import config from './util/config'
+import axios_cancelable from './util/axiosCancel'
+import setHeaders from './util/setHeaders'
 
 export const collectionSearch = function(query) {
   return axios_cancelable.get(`${config.dataApi}/grbio/collection?${qs.stringify(query)}`, {

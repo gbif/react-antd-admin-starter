@@ -1,4 +1,4 @@
-import { JWT_STORAGE_NAME } from './user'
+import { JWT_STORAGE_NAME } from '../user'
 
 export default function setHeaders(headers = {}) {
     const jwt = sessionStorage.getItem(JWT_STORAGE_NAME);

@@ -1,9 +1,9 @@
 import qs from "qs";
 import base64 from 'base-64'
 import axios from 'axios';
-import config from './config'
-import axios_cancelable from './axiosCancel'
-import setHeaders from './setHeaders'
+import config from './util/config'
+import axios_cancelable from './util/axiosCancel'
+import setHeaders from './util/setHeaders'
 
 export const JWT_STORAGE_NAME = 'jwt';
 

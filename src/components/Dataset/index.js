@@ -6,7 +6,6 @@ import { Route, Switch } from 'react-router-dom'
 import NotFound from '../NotFound'
 import DatasetDetails from './Details'
 import ContactList from './ContactList'
-import DataItem from '../DataItem'
 import { getDatasetOverview } from '../../api/dataset'
 
 //load dataset and provide via props to children. load based on route key.
@@ -71,12 +70,5 @@ class Dataset extends React.Component {
     )
   }
 }
-
-// const DecoratedDataset = (props) => {
-//   return <DataItem 
-//     api={getDecoratedDataset} 
-//     query={props.match.params.key} 
-//     render={props => <RoutedDataset {...props}/>} />
-// }
 
 export default withRouter(Dataset)

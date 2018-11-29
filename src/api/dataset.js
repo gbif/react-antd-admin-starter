@@ -1,8 +1,8 @@
 import qs from "qs";
 import axios from 'axios'
-import config from './config'
-import axios_cancelable from './axiosCancel'
-import setHeaders from './setHeaders'
+import config from './util/config'
+import axios_cancelable from './util/axiosCancel'
+import setHeaders from './util/setHeaders'
 
 export const searchDatasets = function(query) {
   return axios_cancelable.get(`${config.dataApi}/dataset?${qs.stringify(query)}`, {

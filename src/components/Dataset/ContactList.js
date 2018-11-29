@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { withRouter } from 'react-router'
 import { List, Skeleton } from 'antd'
-import { FormattedMessage, FormattedRelative } from 'react-intl'
+import { FormattedRelative } from 'react-intl'
 
 class ContactList extends React.Component {
   constructor(props) {

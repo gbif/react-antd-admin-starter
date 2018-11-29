@@ -40,7 +40,7 @@ class BasicMenu extends Component {
 
           <SubMenu key="dataset" title={<span><Icon type="table" /><span><FormattedMessage id="menu.dataset" defaultMessage="Datasets" /></span></span>}>
             <Menu.Item key="/dataset/search">
-              <FormattedMessage id="menu.search" defaultMessage="default ssearch msg" />
+              <FormattedMessage id="menu.search" defaultMessage="Search" />
             </Menu.Item>
             <Menu.Item key="/dataset/deleted">
               <FormattedMessage id="menu.deleted" defaultMessage="Deleted" />

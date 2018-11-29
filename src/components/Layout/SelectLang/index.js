@@ -23,7 +23,7 @@ class SelectLang extends PureComponent {
           <span role="img" aria-label="Kazakh">
             🇰🇿
           </span>{' '}
-          Kazakh
+          Қазақша
         </Menu.Item>
         <Menu.Item key="da">
           <span role="img" aria-label="Dansk">
